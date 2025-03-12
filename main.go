@@ -13,6 +13,11 @@ import (
 	"github.com/prometheus/prometheus/prompb"
 )
 
+// Version information
+const (
+	Version = "0.1.0"
+)
+
 // PrometheusRecord is the ndjson-encoded format used for transporting metrics through firehose
 type PrometheusRecord struct {
 	Body []byte `json:"b"`
@@ -114,7 +119,14 @@ func main() {
 	outputFile := flag.String("output", "", "Output file for JSON results (default: stdout)")
 	prettyPrint := flag.Bool("pretty", true, "Enable pretty-printing of JSON output")
 	humanTime := flag.Bool("human-time", false, "Show human-readable timestamps in output")
+	showVersion := flag.Bool("version", false, "Show version information and exit")
 	flag.Parse()
+
+	// Show version if requested
+	if *showVersion {
+		fmt.Printf("prometheus-decoder version %s\n", Version)
+		os.Exit(0)
+	}
 
 	if *inputFile == "" {
 		fmt.Println("Error: Input file is required")
