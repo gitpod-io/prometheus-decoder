@@ -49,6 +49,10 @@ This project uses GitHub Actions to automatically build and publish releases whe
    ```
 4. GitHub Actions will automatically build binaries for multiple platforms and create a new release
 
+### ToDo
+
+ - [ ] Do we want to keep this at all? Or can we find a better way to share the way to access metric recordings?
+
 ### Version History
 
 - v0.1.0 - Initial release
